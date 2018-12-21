@@ -1,0 +1,27 @@
+<div class="container my-5">
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="error" class="alert alert-danger animated fadeIn">
+  <h3>Error</h3>
+  <p>{{ mensajeError }}</p>
+</div>
+
+<app-tarjetas [items]="nuevasCanciones"></app-tarjetas>
+
+
+<div class="card-columns animated fadeIn">
+<div class="card puntero" *ngFor="let item of trackList" (click)="verArtista(item)">
+    <img class="card-img-top" [src]="item.album.images | noimage" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">
+        {{ item.name }}
+      </h5>
+      <p class="card-text"><span *ngFor="let artista of item.artists" class="badge badge-pill badge-primary">
+          {{ artista.name }}
+        </span></p>
+    </div>
+  </div>
+</div>
+
+
+</div>
